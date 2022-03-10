@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tictactow</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="../core/Tictactoe.js" type="module"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <!-- <div class="info-container">
+        <h1>Tic tac toe</h1>
+        <p>Let's play the game!</p>
+        <div class="info-buttons">
+          <button class="btn">Reset</button>
+          <button class="btn">New Game</button>
+          <button class="btn">Invite a friend</button>
+        </div>
+        <table class="info-table">
+          <tr>
+            <th>X WIN</th>
+            <th>O WIN</th>
+            <th>TIEDS</th>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+          </tr>
+        </table>
+      </div> -->
+
+      <div class="board-container">
+        <div class="header-board">
+          <div class="header-board-cell"><h2 class="turnX">Turn's X</h2></div>
+          <div class="header-board-cell"><h2 class="turnO">Turn's O</h2></div>
+        </div>
+
+        <div class="board" id="board">
+          <div class="cell" cell-index></div>
+          <div class="cell" cell-index></div>
+          <div class="cell" cell-index></div>
+          <div class="cell" cell-index></div>
+          <div class="cell" cell-index></div>
+          <div class="cell" cell-index></div>
+          <div class="cell" cell-index></div>
+          <div class="cell" cell-index></div>
+          <div class="cell" cell-index></div>
+          <div class="winnerMark"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

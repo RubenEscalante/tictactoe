@@ -1,0 +1,255 @@
+@font-face {
+  font-family: UniSans;
+  src: url("./fonts/uni-sans.otf") format("opentype");
+}
+
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --cell-size: 150px;
+  --icon-size: cal(var(--cell-size) * 0.9);
+  --dark-primary: #1a1a1a;
+  --white-primary: #ffffff7e;
+  --white-text: #ffffff;
+  --X-color: rgb(195, 96, 214);
+  --O-color: rgb(255, 134, 78);
+}
+body {
+  background-color: var(--dark-primary);
+}
+.container {
+  display: grid;
+  height: 100vh;
+  width: 75vw;
+  margin: 0 auto;
+  justify-content: center;
+  align-content: center;
+  background-color: var(--dark-primary);
+  color: var(--white-text);
+  font-family: UniSans;
+  font-size: 26px;
+  /* grid-template-columns: repeat(2, 1fr);
+  grid-auto-flow: dense; */
+}
+.info-container {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  width: 100%;
+  justify-self: center;
+  grid-column: 2;
+  letter-spacing: 2px;
+}
+.info-container h1 {
+  font-size: 92px;
+}
+.info-container p {
+  padding-left: 25px;
+}
+
+.info-buttons {
+  text-align: center;
+  margin-top: 25px;
+}
+.info-table {
+  margin-top: 25px;
+  text-align: center;
+}
+.btn {
+  padding: 15px 30px;
+  cursor: pointer;
+}
+.board-container {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  grid-column: 1;
+}
+.header-board {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
+.header-board-cell {
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+}
+.board {
+  position: relative;
+  width: calc(var(--cell-size) * 3);
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  grid-template-columns: repeat(3, var(--cell-size));
+}
+.cell {
+  width: 100%;
+  height: var(--cell-size);
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.cell::after,
+.cell::before {
+  pointer-events: none;
+}
+
+.cell:first-child,
+.cell:nth-child(2),
+.cell:nth-child(3) {
+  border-top: none;
+}
+.cell:first-child::before {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 100%;
+  background-color: var(--white-primary);
+  border-radius: 25px;
+  left: 32%;
+}
+.cell:nth-child(2)::before {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 100%;
+  background-color: var(--white-primary);
+  border-radius: 25px;
+  left: 65.6%;
+}
+.cell:nth-child(5)::before {
+  content: "";
+  transform: rotate(90deg);
+  position: absolute;
+  width: 8px;
+  height: 100%;
+  background-color: var(--white-primary);
+  border-radius: 25px;
+  left: 50%;
+  top: -17%;
+}
+.cell:nth-child(5)::after {
+  content: "";
+  transform: rotate(90deg);
+  position: absolute;
+  width: 8px;
+  height: 100%;
+  background-color: var(--white-primary);
+  border-radius: 25px;
+  left: 50%;
+  top: 17%;
+}
+.cell:last-child,
+.cell:nth-child(8),
+.cell:nth-child(7) {
+  border-bottom: none;
+}
+
+.cell:nth-child(3n + 1) {
+  border-left: none;
+}
+.cell:nth-child(3n + 3) {
+  border-right: none;
+}
+
+.cell.x,
+.cell.o {
+  cursor: not-allowed;
+}
+
+.board.x .cell:not(.x):not(.o):hover {
+  background-image: url("data:image/svg+xml;utf8,<svg id='eRdXZVqJbFg1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 150 150' shape-rendering='geometricPrecision' text-rendering='geometricPrecision'><rect id='eRdXZVqJbFg2' width=' 139.370533' height='21' rx='8.73' ry='8.73' transform='matrix(.979149-.979149 0.707107 0.707107 0.593422 137.054587)' fill='%233b3b3b' stroke-width='0'/><rect id='eRdXZVqJbFg3' width=' 139.370533' height='21.000063' rx='8.73' ry='8.73' transform='matrix(.979149 0.979149-.707105 0.707105 12.945395 0.000018)' fill='%233b3b3b' stroke-width='0' stroke-dasharray='320.73'/></svg>");
+  width: calc(var(--cell-size) * 1);
+  background-size: calc(var(--cell-size) * 0.8);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.board.o .cell:not(.x):not(.o):hover {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 150 150" shape-rendering="geometricPrecision" text-rendering="geometricPrecision"><circle id="circlesvg" cx="75" cy="75" r="65" stroke="%233b3b3b" stroke-width="21" fill="none" stroke-dasharray="420" stroke-linecap="round" ></circle></svg>');
+  width: calc(var(--cell-size) * 1);
+  background-size: calc(var(--cell-size) * 0.8);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.cell.x svg {
+  fill: var(--X-color);
+  stroke: var(--X-color);
+}
+.cell.o svg {
+  fill: var(--O-color);
+  stroke: var(--O-color);
+}
+
+.turn {
+  cursor: pointer;
+  position: relative;
+}
+.turn::before {
+  content: "";
+  position: absolute;
+  height: 10px;
+  width: 100%;
+  border-radius: 20px;
+  top: 100%;
+  animation-name: turnAnimation;
+  animation-duration: 0.6s;
+  animation-iteration-count: 1;
+  animation-timing-function: ease;
+}
+
+.turn.x::before {
+  background-color: var(--X-color);
+}
+.turn.o::before {
+  background-color: var(--O-color);
+}
+
+.winnerMark {
+  position: absolute;
+  width: calc(var(--cell-size) * 0.14);
+  height: 110%;
+  border-radius: 20px;
+  background-color: rgb(32, 212, 86);
+  animation-name: winnerMarkAnimation;
+  display: none;
+  animation-duration: 0.3s;
+  animation-iteration-count: 1;
+  animation-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  backface-visibility: hidden;
+}
+.winnerMarkShow {
+  display: flex;
+}
+
+svg {
+  width: calc(var(--cell-size) * 0.8);
+  fill: black;
+  stroke: black;
+}
+
+@keyframes turnAnimation {
+  from {
+    width: 0;
+    transform: translateX(50px);
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes winnerMarkAnimation {
+  from {
+    height: 0;
+  }
+  to {
+    height: 110%;
+  }
+}
